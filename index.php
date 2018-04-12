@@ -38,7 +38,7 @@ echo "<script type='text/javascript'>alert('$message');</script>";
    <div class="container login-container">
        <form action="" method="POST">
  <div class="form-group">
-   <input type="email" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp"  placeholder="Enter Username"></input>
+   <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp"  placeholder="Enter Username"></input>
  </div>
  <div class="form-group">
    <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password"></input>
