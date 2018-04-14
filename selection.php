@@ -13,7 +13,7 @@
    </h2>
    <div class="container selection-page-container bg-dark">
        <input type="button" class="btn btn-danger select-btn" onclick="location.href='studentReg.php';" value="Student" />
-       <input type="button" class="btn btn-success select-btn" onclick="location.href='teacherReg.html';" value="Teacher" />
+       <input type="button" class="btn btn-success select-btn" onclick="location.href='teacherReg.php';" value="Teacher" />
        <input type="button" class="btn btn-info select-btn" onclick="location.href='parentReg.html';" value="Parent" />
        <input type="button" class="btn btn-warning select-btn" onclick="location.href='schoolReg.html';" value="School" />
    </div>
