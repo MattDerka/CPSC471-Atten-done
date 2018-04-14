@@ -6,6 +6,7 @@
     $nm = mysqli_real_escape_string($db, $_POST['username']);
     $pass = mysqli_real_escape_string($db, $_POST['password']);
 
+    // check if student is logging in
     $sql = "SELECT St_ID FROM student WHERE Username = '$nm' and Password = '$pass'";
     $result = mysqli_query($db, $sql);
     $row = mysqli_fetch_array($result);
@@ -38,7 +39,7 @@ echo "<script type='text/javascript'>alert('$message');</script>";
    <div class="container login-container">
        <form action="" method="POST">
  <div class="form-group">
-   <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp"  placeholder="Enter Username"></input>
+   <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp"  placeholder="Enter Username (Name if School)"></input>
  </div>
  <div class="form-group">
    <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password"></input>
