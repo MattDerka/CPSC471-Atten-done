@@ -3,20 +3,41 @@
   session_start();
 
   if($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nm = mysqli_real_escape_string($db, $_POST['username']);
+    $id = mysqli_real_escape_string($db, $_POST['id']);
     $pass = mysqli_real_escape_string($db, $_POST['password']);
 
     // check if student is logging in
-    $sql = "SELECT St_ID FROM student WHERE Username = '$nm' and Password = '$pass'";
+    $sql = "SELECT St_ID FROM student WHERE St_ID = '$id' and Password = '$pass'
+            UNION
+            SELECT T_ID FROM teacher WHERE T_ID = '$id' and Password = '$pass'
+            UNION
+            SELECT P_ID FROM parent WHERE P_ID = '$id' and Password = '$pass'
+            UNION
+            SELECT S_ID FROM school WHERE S_ID = '$id' and Password = '$pass'";
     $result = mysqli_query($db, $sql);
     $row = mysqli_fetch_array($result);
-    $active = $row['active'];
+    $idVal = $row['St_ID'];
+    //$active = $row['active'];
 
-    $count = mysqli_num_rows($result);
+    //$count = mysqli_num_rows($result);
+    //echo "<script type='text/javascript'>alert('$row');</script>";
 
-    if($count == 1) {
+    if(999999 <$idVal && $idVal < 2000000) {
       header("location: student.php");
-    } else {
+    }
+
+    else if(1999999 < $idVal && $idVal < 3000000) {
+      header("location: Teacher.php");
+    }
+
+    // else if(2999999 < $row['S_ID'] && $row['S_ID'] < 4000000) {
+    //   header("location: school.php");
+    // }
+    //
+    // else if(3999999 < $row['P_ID']) {
+    //   header("location: parent.php");
+    // }
+    else {
       $message = "wrong answer";
 echo "<script type='text/javascript'>alert('$message');</script>";
     }
@@ -39,7 +60,7 @@ echo "<script type='text/javascript'>alert('$message');</script>";
    <div class="container login-container">
        <form action="" method="POST">
  <div class="form-group">
-   <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp"  placeholder="Enter Username (Name if School)"></input>
+   <input type="text" class="form-control" name="id" id="exampleInputEmail1" aria-describedby="emailHelp"  placeholder="Enter ID"></input>
  </div>
  <div class="form-group">
    <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password"></input>

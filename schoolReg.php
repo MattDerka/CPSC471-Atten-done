@@ -13,8 +13,13 @@ if(!mysqli_query($db, $sql))
   die('Error: ' . mysqli_error($db));
 }
 else {
-  echo "teacher added";
-  header("location: index.php");
+  $sql = "SELECT S_ID FROM school WHERE S_name= '". $_POST["name"]."'";
+  $result = mysqli_query($db, $sql);
+  $row = mysqli_fetch_array($result);
+
+  echo "<script type='text/javascript'>alert(" . $row['S_ID']. ");</script>";
+
+  echo '<script type="text/javascript">window.location = "index.php"</script>';
 }
 }
 ?>

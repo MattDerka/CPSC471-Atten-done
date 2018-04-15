@@ -2,8 +2,47 @@
 <html>
 <head>
 	<title>Student</title>
+	<link rel="stylesheet" href="App.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-	<h1>I am a student</h1>
+
+
+      <div class="App">
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+   <a class="navbar-brand" href="#">Student Page</a>
+
+   <div class="collapse navbar-collapse" id="navbarNav">
+     <ul class="navbar-nav">
+       <li class="nav-item active">
+         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="#" onClick={handler1}>Logout</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link " href="#">Disabled</a>
+       </li>
+     </ul>
+   </div>
+ </nav>
+
+
+     <Modal open={this.state.open} onClose={this.onCloseModal} little>
+       <h3>Hello:</h3>
+     </Modal>
+        <div class="container-fluid teacher-container">
+            <div class="teacher-left bg-dark">
+                <div class="teacher-top-panel">
+                    <h4>Attendance Record:</h4><div class="teacher-addBtn" onClick={this.onOpenModal}></div></div>
+
+                <div class="teacher-text-field">
+                    <ul class="teacher-students-list">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+
 </body>
 </html>
