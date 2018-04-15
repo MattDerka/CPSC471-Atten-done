@@ -4,6 +4,25 @@
 h4{
     color:white!important;
 }
+ul{
+    list-style: none;
+    padding:2%!important;
+}
+.school-container{
+    display: flex;
+    flex-direction: row;
+
+
+
+}
+.school-sub-container{
+     margin: 5% 2%;
+    width:70%!important;
+    border-radius: 6px;
+    border:2px solid lightgrey;
+    padding: 2% 5% 0 5%;
+    flex-grow: 1;
+}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;

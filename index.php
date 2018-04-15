@@ -2,7 +2,7 @@
   include("config.php");
   session_start();
 
-  if($_SERVER["REQUEST_METHOD"] == "POST") {
+  if($_SERVER["REQUEST_METHOD"] === "POST") {
     $nm = mysqli_real_escape_string($db, $_POST['username']);
     $pass = mysqli_real_escape_string($db, $_POST['password']);
 
