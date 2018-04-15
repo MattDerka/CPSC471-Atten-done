@@ -30,13 +30,12 @@
       header("location: Teacher.php");
     }
 
-    // else if(2999999 < $row['S_ID'] && $row['S_ID'] < 4000000) {
-    //   header("location: school.php");
-    // }
-    //
-    // else if(3999999 < $row['P_ID']) {
-    //   header("location: parent.php");
-    // }
+    else if(2999999 < $idVal && $idVal < 4000000) {
+      header("location: school.php");
+    }
+    else if(3999999 < $idVal) {
+       header("location: parent.php");
+    }
     else {
       $message = "wrong answer";
 echo "<script type='text/javascript'>alert('$message');</script>";
