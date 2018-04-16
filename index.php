@@ -4,6 +4,7 @@
 
   if($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = mysqli_real_escape_string($db, $_POST['id']);
+    $sid = $_POST["id"];
     $pass = mysqli_real_escape_string($db, $_POST['password']);
 
     // check if student is logging in
@@ -23,18 +24,18 @@
     //echo "<script type='text/javascript'>alert('$row');</script>";
 
     if(999999 <$idVal && $idVal < 2000000) {
-      header("location: student.php");
+      header("location: student.php?idVal=".$idVal);
     }
 
     else if(1999999 < $idVal && $idVal < 3000000) {
-      header("location: Teacher.php");
+      header("location: Teacher.php?idVal=");
     }
 
     else if(2999999 < $idVal && $idVal < 4000000) {
-      header("location: school.php");
+      header("location: school.php?idVal=".$idVal);
     }
     else if(3999999 < $idVal) {
-       header("location: parent.php");
+       header("location: parent.php?idVal=".$idVal);
     }
     else {
       $message = "wrong answer";

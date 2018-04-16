@@ -1,9 +1,15 @@
+<?php
+  include("config.php");
+  session_start();
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Student</title>
-	<link rel="stylesheet" href="App.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>Student</title>
+  <link rel="stylesheet" href="App.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 
@@ -18,7 +24,7 @@
          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
        </li>
        <li class="nav-item">
-         <a class="nav-link" href="#" onClick={handler1}>Logout</a>
+         <a class="nav-link" onclick="location.href='index.php';">Logout</a>
        </li>
        <li class="nav-item">
          <a class="nav-link " href="#">Disabled</a>
@@ -38,6 +44,22 @@
 
                 <div class="teacher-text-field">
                     <ul class="teacher-students-list">
+                      <?php
+                        $idVal = $_GET['idVal'];
+                        $sql = "SELECT C_name FROM class_list WHERE St_ID='$idVal'";
+                        $result = $db->query($sql);
+
+                        if($result->num_rows > 0){
+
+                          while($row = $result->fetch_assoc()){
+                            echo "" . $row["C_name"]. "<br>";
+
+                          }
+                        }
+                        else{
+                          echo "0 results";
+                        }
+                      ?>
                     </ul>
                 </div>
             </div>

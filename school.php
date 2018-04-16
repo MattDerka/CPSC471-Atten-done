@@ -1,6 +1,7 @@
 <?php
 include ("config.php");
 session_start();
+$x = $_GET['idVal'];
 
 if(isset($_POST['add-teacher'])) {
   // $sql = "UPDATE class 
@@ -83,10 +84,20 @@ if(!mysqli_query($db, $sql)) {
          <h2>List of classes: </h2>
          <div class="innerTextField">
            <ul class="list-group">
-             <li class="list-group-item">CPSC457</li>
-             <li class="list-group-item">CPSC457</li>
-             <li class="list-group-item">CPSC457</li>
-             <li class="list-group-item">CPSC457</li>
+            <?php
+              $sql = "SELECT C_name FROM class WHERE S_ID = '$x'";
+              $result = $db->query($sql);
+
+              if ($result->num_rows > 0) {
+              // output data of each row
+              while($row = $result->fetch_assoc()) {
+                echo "" . $row["C_name"]. "<br>";
+                    }
+                  } else {
+                  echo "0 results";
+              }
+
+            ?>
            </ul>
          </div>
        </div>
