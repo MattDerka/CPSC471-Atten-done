@@ -19,7 +19,7 @@
   if(isset($_GET['del_task'])) {
     $id = $_GET['del_task'];
 
-    mysqli_query($db, "DELETE FROM class_list WHERE St_ID='$id'");
+    mysqli_query($db, "DELETE FROM class_list WHERE C_name='$id'");
   }
 
   $tasks = mysqli_query($db, "SELECT C_name, St_ID FROM class_list");
@@ -104,7 +104,7 @@
                               Late <input name="r" type="radio">
                             </td>
                             <td class="delete">
-                              <a href="Teacher.php?del_task=<?php echo $row['St_ID']; ?>">x</a>
+                              <a href="Teacher.php?del_task=<?php echo $row['C_name']; ?>">x</a>
                             </td>
                           </tr>
 
