@@ -87,6 +87,7 @@
                       <thead>
                           <tr>
                               <th>Name</th>
+                              <th>Class</th>
                               <th>Status</th>
                               <th>Action</th>
                           </tr>
@@ -98,6 +99,7 @@
 
                           <tr>
                             <td><?php echo $row['St_ID']; ?></td>
+                            <td><?php echo $row['C_name']; ?></td>
                             <td>
                               Present <input name="r" type="radio">
                               Absent <input name="r" type="radio">
