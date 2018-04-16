@@ -1,3 +1,30 @@
+<?php
+  // connnect to the database
+  include("config.php");
+  session_start();
+
+  $sql = "SELECT C_name FROM class";
+  $class = mysqli_query($db, $sql);
+
+
+  if(isset($_POST['submit'])) {
+    //$id = $_POST['id'];
+
+    $sql = "INSERT INTO class_list (C_name, St_ID) VALUES (  '". $_POST["class"]."' , '". $_POST["id"]."')";
+
+    mysqli_query($db, $sql);
+    //header('location: Teacher.php');
+  }
+
+  if(isset($_GET['del_task'])) {
+    $id = $_GET['del_task'];
+
+    mysqli_query($db, "DELETE FROM class_list WHERE St_ID='$id'");
+  }
+
+  $tasks = mysqli_query($db, "SELECT C_name, St_ID FROM class_list");
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -18,7 +45,7 @@
          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
        </li>
        <li class="nav-item">
-         <a class="nav-link" href="#" onClick={handler1}>Login</a>
+         <a class="nav-link" href="#" onclick="location.href='index.php';">Logout</a>
        </li>
        <li class="nav-item">
          <a class="nav-link" href="#">Pricing</a>
@@ -30,19 +57,61 @@
    </div>
  </nav>
 
-     <Modal open={this.state.open} onClose={this.onCloseModal} little>
+
        <h3>Adding Student</h3>
-       <label>Student ID:</label>
-       <input></input>
-       <button class="btn btn-success" onClick={this.onCloseModal}>Add</button>
-     </Modal>
+       <form action="Teacher.php" method="post">
+         <label>Student ID:</label>
+         <input type="text" name="id"></input>
+
+         <select name="class">
+           <option selected="selected">Select Class</option>
+           <?php while($row1 = mysqli_fetch_array($class)):;?>
+             <option value="<?php echo $row1[0];?>"><?php echo $row1[0];?></option>
+           <?php endwhile;?>
+         </select>
+
+
+         <button type="submit"  name="submit">Add</button>
+      </form>
+
+
+
         <div class="container-fluid teacher-container">
             <div class="teacher-left bg-dark">
                 <div class="teacher-top-panel">
                     <h4>Attendance Record: </h4><div class="teacher-addBtn" onClick={this.onOpenModal}><FontAwesome name="plus-circle" size='2x' style={{ color: '#6de8a8'}}/></div></div>
 
                 <div class="teacher-text-field">
-                    <ul class="teacher-students-list">{students}</ul>
+
+                    <table style="width: 100%">
+                      <thead>
+                          <tr>
+                              <th>Name</th>
+                              <th>Status</th>
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+
+                      <tbody>
+                        <?php while ($row = mysqli_fetch_array($tasks)) { ?>
+
+
+                          <tr>
+                            <td><?php echo $row['St_ID']; ?></td>
+                            <td>
+                              Present <input name="r" type="radio">
+                              Absent <input name="r" type="radio">
+                              Late <input name="r" type="radio">
+                            </td>
+                            <td class="delete">
+                              <a href="Teacher.php?del_task=<?php echo $row['St_ID']; ?>">x</a>
+                            </td>
+                          </tr>
+
+                        <?php } ?>
+
+
+                    </table>
                 </div>
             </div>
 

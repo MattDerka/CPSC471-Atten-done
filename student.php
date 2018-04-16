@@ -1,3 +1,8 @@
+<?php
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +23,7 @@
          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
        </li>
        <li class="nav-item">
-         <a class="nav-link" href="#" onClick={handler1}>Logout</a>
+         <a class="nav-link" onclick="location.href='index.php';">Logout</a>
        </li>
        <li class="nav-item">
          <a class="nav-link " href="#">Disabled</a>
